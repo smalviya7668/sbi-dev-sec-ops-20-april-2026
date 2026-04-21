@@ -125,7 +125,7 @@ public class ApplicationController {
         // VULNERABLE — string concatenation in JPQL (SonarQube: java:S2076 / taint)
         // Try: ?branch=' OR '1'='1  →  returns ALL applications
         List<LoanApplication> result = em.createQuery(
-                "SELECT  * FROM LoanApplication"
+                "SELECT a FROM LoanApplication",
                 LoanApplication.class
         ).getResultList();
 
