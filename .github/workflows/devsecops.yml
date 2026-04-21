@@ -46,10 +46,15 @@ jobs:
       - name: Build and SAST scan
         env:
           SONAR_TOKEN:    ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+         # SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           JWT_SECRET:     ${{ secrets.JWT_SECRET }}
         run: |
-          mvn clean verify sonar:sonar \
+          # mvn clean verify sonar:sonar \
+          #   -Dsonar.qualitygate.wait=true \
+          #   -Dsonar.qualitygate.timeout=300
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.projectKey=smalviya7668_sbi-dev-sec-ops-20-april-2026 \
             -Dsonar.qualitygate.wait=true \
             -Dsonar.qualitygate.timeout=300
 
