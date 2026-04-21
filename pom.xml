@@ -19,7 +19,7 @@
 
     <properties>
         <java.version>17</java.version>
-        <!-- SonarQube configuration — update SONAR_SERVER_IP before scanning -->
+        <!-- SonarQube configuration — update SONAR_SERVER_IP before scanning --test by by by>
         <!-- <sonar.host.url>http://SONAR_SERVER_IP:9000</sonar.host.url>
         <sonar.projectKey>sbi-lms</sonar.projectKey>
         <sonar.projectName>SBI Loan Management System</sonar.projectName> -->
