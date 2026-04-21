@@ -21,8 +21,8 @@
         <java.version>17</java.version>
         <!-- SonarQube configuration — update SONAR_SERVER_IP before scanning -->
         <!-- SonarQube configuration — update SONAR_SERVER_IP before scanning -->
-        <sonar.organization>vaman-pundit</sonar.organization>
-        <sonar.projectKey>vaman-pundit_sbi-dev-sec-ops-20-april-2026</sonar.projectKey>
+        <sonar.organization>smalviya7668</sonar.organization>
+        <sonar.projectKey>smalviya7668_sbi-dev-sec-ops-20-april-2026</sonar.projectKey>
         <sonar.projectName>SBI Loan Management System</sonar.projectName>
         <sonar.java.source>17</sonar.java.source>
         <sonar.exclusions>**/test/**,**/generated/**</sonar.exclusions>
