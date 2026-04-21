@@ -59,7 +59,8 @@ public class ApplicationController {
         return ResponseEntity.ok(
             applicationService.findAll().stream()
                 .map(app -> maskPiiIfOfficer(applicationService.toDto(app), auth))
-                .collect(Collectors.toList())
+                //.collect(Collectors.toList())
+                 .toList()
         );
     }
 
@@ -120,7 +121,7 @@ public class ApplicationController {
     @GetMapping("/search")
     @Operation(summary = "Search applications by branch name")
     @PreAuthorize("hasAnyRole('MANAGER','OFFICER')")
-    public ResponseEntity<?> searchByBranch(@RequestParam String branch) {
+    public ResponseEntity<LoanApplication> searchByBranch(@RequestParam String branch) {
 
         // VULNERABLE — string concatenation in JPQL (SonarQube: java:S2076 / taint)
         // Try: ?branch=' OR '1'='1  →  returns ALL applications
@@ -130,17 +131,10 @@ public class ApplicationController {
         ).getResultList();
 
         return ResponseEntity.ok(result.stream()
-                .map(applicationService::toDto)
-                .collect(Collectors.toList()));
+                .map(applicationService::toDto).toList());
+                // .collect(Collectors.toList()));
 
-        // ── CAPSTONE FIX (Step 4) — delete the block above and uncomment below ──
-        //
-        // @RequestParam @NotBlank @Size(max = 100) String branch  ← add validation too
-        //
-        // List<LoanApplication> result = applicationService.findByBranchName(branch);
-        // return ResponseEntity.ok(result.stream()
-        //         .map(applicationService::toDto)
-        //         .collect(Collectors.toList()));
+       
     }
 
     // ── PII masking helper — A01 Broken Access Control ────────────────────────
