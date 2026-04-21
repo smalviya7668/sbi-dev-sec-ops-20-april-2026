@@ -20,9 +20,12 @@
     <properties>
         <java.version>17</java.version>
         <!-- SonarQube configuration — update SONAR_SERVER_IP before scanning -->
-        <sonar.host.url>http://SONAR_SERVER_IP:9000</sonar.host.url>
+        <!-- <sonar.host.url>http://SONAR_SERVER_IP:9000</sonar.host.url>
         <sonar.projectKey>sbi-lms</sonar.projectKey>
-        <sonar.projectName>SBI Loan Management System</sonar.projectName>
+        <sonar.projectName>SBI Loan Management System</sonar.projectName> -->
+        <sonar.projectKey>smalviya7668_sbi-dev-sec-ops-20-april-2026</sonar.projectKey>
+<sonar.organization>smalviya7668</sonar.organization>
+<sonar.projectName>SBI Loan Management System</sonar.projectName>
         <sonar.java.source>17</sonar.java.source>
         <sonar.exclusions>**/test/**,**/generated/**</sonar.exclusions>
     </properties>
