@@ -21,8 +21,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 //hi
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.list;
+
 
 /**
  * Loan Application REST endpoints.
