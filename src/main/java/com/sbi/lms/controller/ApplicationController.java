@@ -121,7 +121,7 @@ public class ApplicationController {
     @GetMapping("/search")
     @Operation(summary = "Search applications by branch name")
     @PreAuthorize("hasAnyRole('MANAGER','OFFICER')")
-    public ResponseEntity<LoanApplication> searchByBranch(@RequestParam String branch) {
+    public ResponseEntity<LoanApplicationDTO> searchByBranch(@RequestParam String branch) {
 
         // VULNERABLE — string concatenation in JPQL (SonarQube: java:S2076 / taint)
         // Try: ?branch=' OR '1'='1  →  returns ALL applications
