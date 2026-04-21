@@ -51,7 +51,7 @@ public class ApplicationController {
                                   SecurityService securityService) {
         this.applicationService = applicationService;
         this.securityService    = securityService;
-        System.out.println("heloooo")
+        System.out.println("heloooo");
     }
 
     @GetMapping
