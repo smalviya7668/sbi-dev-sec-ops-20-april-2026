@@ -19,14 +19,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-//comment  this new added           
+//hi
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
-
 /**
- * Loan Application REST endpoints.
+ * Loan Application REST endpoints..
  *
  * DevSecOps teaching points in this controller:
  *
@@ -52,7 +50,6 @@ public class ApplicationController {
                                   SecurityService securityService) {
         this.applicationService = applicationService;
         this.securityService    = securityService;
-        System.out.println("heloooo");
     }
 
     @GetMapping
@@ -79,14 +76,13 @@ public class ApplicationController {
      */
     @GetMapping("/{id}")
     @Operation(summary = "Get application by ID")
-    @PreAuthorize("hasRole('MANAGER')")
     // LAB 1: @PreAuthorize is intentionally missing here — SonarQube will catch it
+    @PreAuthorize("hasAnyRole('MANAGER','OFFICER')")
     public ResponseEntity<LoanApplicationDTO> getById(@PathVariable Long id, Authentication auth) {
         LoanApplication app = applicationService.findById(id);
         LoanApplicationDTO dto = applicationService.toDto(app);
         // LAB 1 FIX: uncomment the line below after adding @PreAuthorize
         dto = maskPiiIfOfficer(dto, auth);
-         System.out.println("hi");
         return ResponseEntity.ok(dto);
     }
 
